@@ -5,17 +5,49 @@ swiper-container {
 swiper-slide {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  background-color: #1a1a1a; /* Fondo oscuro para un contraste fuerte */
+  color: #fff; /* Texto blanco para resaltar sobre el fondo oscuro */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
   justify-content: center;
-  background-color: aqua;
-}
-.title1 {
-  color: red;
+  align-items: center;
+  height: 100vh; /* Centrado en toda la pantalla */
 }
 
-.bg-color-slide {
-  background-color: magenta;
+.texto-introduccion{
+    font-size: 3em; /* Tamaño grande */
+  font-weight: bold; /* Negrita */
+  color: #3347ff; /* Color vibrante */
+  text-transform: uppercase; /* Mayúsculas */
+  letter-spacing: 5px; /* Espaciado entre letras */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+  animation: glow 1.5s ease-in-out infinite; /* Efecto de resplandor animado */
 }
+.titulo-llamativo {
+  font-size: 4em; /* Tamaño grande para destacar el título */
+  font-family: 'Arial', sans-serif; /* Tipo de letra limpio y moderno */
+  font-weight: bold; /* Negrita */
+  color: #ff5733; /* Color cálido y vibrante */
+  text-align: center; /* Centrar el título */
+  text-transform: uppercase; /* Mayúsculas */
+  letter-spacing: 8px; /* Espaciado amplio entre letras */
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), 0 0 25px #ff5733, 0 0 5px #ff5733; /* Efecto de sombra */
+  animation: titanic-glow 2s ease-in-out infinite; /* Animación de brillo */
+}
+@keyframes titanic-glow {
+  0% {
+    text-shadow: 0 0 10px #ff5733, 0 0 20px #ff5733, 0 0 30px #ff5733;
+  }
+  50% {
+    text-shadow: 0 0 20px #ff5733, 0 0 30px #ff5733, 0 0 40px #ff5733;
+  }
+  100% {
+    text-shadow: 0 0 10px #ff5733, 0 0 20px #ff5733, 0 0 30px #ff5733;
+  }
+}
+
 
 .close-icon {
     position: absolute;
