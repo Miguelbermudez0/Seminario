@@ -1,17 +1,17 @@
 <ion-header >
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+        <ion-menu-button></ion-menu-button>
     </ion-buttons>
-  </ion-toolbar>
+</ion-toolbar>
 </ion-header>
 
-<ion-content >
-  <ion-title>{{user_data.name}} {{user_data.last_name}}</ion-title>
-  <ion-avatar (click)="takePhoto()">
-    <img src="user_data.image"/>
+<ion-content>
+  <h1>{{user_data.name}} {{user_data.last_name}}</h1>
+  <ion-avatar (click)="presentPhotoOptions()">
+    <img [src]="user_data.image ? user_data.image : 'assets/images/default-avatar.jpeg'"/>
   </ion-avatar>
-  <p>usuario: {{user_data.name}}</p>
-  <p>Seguidores: {{user_data.followed_users.length}}</p>
-  <p>Siguiendo: {{user_data.following_users.length}}</p>
+  <p>usuario: {{user_data.username}}</p>
+  <p>Seguidores: {{user_data.followers.length}}</p>
+  <p>Siguiendo: {{user_data.followees.length}}</p>
 </ion-content>

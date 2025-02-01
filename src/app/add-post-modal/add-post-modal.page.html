@@ -1,42 +1,48 @@
-<ion-header >
+<ion-header>
   <ion-toolbar>
-    <ion-title>Crear un Nuevo Post</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Crear publicación</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
-  <form [formGroup]="AddPostForm" (ngSubmit)="addPost(addPostForm.value)">
-  <div (click)="uploadPhone()">
-    <img [src]="post_image ? post_image : 'assets/images/place_holder.jpeg"/>
-    <p *ngIf="!post_image">Haz click para subir una imagen</p>
-  </div>
-  <div>
-    <ng-container *ngFor="let error of formErrors.image">
-      <ion-label color="danger" 
-      *ngIf="(AddPostForm.get('image')?.hasError(error.type) && AddPostForm.get('image')?.dirty)">
-      {{ error.message }}
-    </ion-label>
-    </ng-container>
-  </div>
-  <ion-item>
-    <ion-textarea label="Descripcion del post" labelIpPlacement="floating" placeholder="Postea lo que piensas" formControlName="description"></ion-textarea>
-  </ion-item>
-  <div>
-    <ng-container *ngFor="let error of formErrors.descripcion">
-      <ion-label color="danger" 
-      *ngIf="(AddPostForm.get('description')?.hasError(error.type) && AddPostForm.get('description')?.dirty)">
-      {{ error.message }}
-    </ion-label>
-    </ng-container>
-  </div>
-  <ion-footer>
-    <ion-button
-    type="submit"
-    [disabled]="!AddPostForm.valid"
-    expand="full">
-  Publicar
-  </ion-button>
-  </ion-footer>
+<ion-content>
+  <form [formGroup]="addPostForm" (ngSubmit)="addPost(addPostForm.value)">
+    
+    <div class="image-upload" (click)="uploadPhone()">
+      <img [src]="post_image ? post_image : '/assets/image/noimage.png'" />
+      <p *ngIf="!post_image">adjuntar  imagen</p>
+    </div>
 
-</form>
+    <ion-item>
+      <ion-textarea
+        label="..."
+        labelPlacement="floating"
+        placeholder="Que estás pensando"
+        formControlName="description">
+      </ion-textarea>
+      <ion-note slot="error" *ngIf="addPostForm.get('description')?.hasError('required')">
+        La descripción es obligatoria.
+      </ion-note>
+      <ion-note slot="error" *ngIf="addPostForm.get('description')?.hasError('minlength')">
+        minimo 5 caracteres.
+      </ion-note>
+    </ion-item>
+
+    <ion-footer>
+      <ion-button
+        type="submit"
+        [disabled]="!addPostForm.valid"
+        expand="full">
+        Publicar
+      </ion-button>
+    </ion-footer>
+
+  </form>
+
+  <ion-loading [isOpen]="isLoading" message="Publicando post..." spinner="crescent"></ion-loading>
+
 </ion-content>
