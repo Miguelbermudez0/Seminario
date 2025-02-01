@@ -17,10 +17,22 @@
       </ion-label>
       </ng-container>
     </div>
+    <ion-item>
+      <ion-input label="Password" labelPlacement="floating" placeholder="******" formControlName="password" type="Password"></ion-input>
+    </ion-item>
+    <div>
+      <ng-container *ngFor="let error of formErrors.password">
+        <ion-label color="danger" 
+        *ngIf="(loginForm.get('password')?.hasError(error.type) && loginForm.get('password')?.dirty)">
+        {{ error.message }}
+      </ion-label>
+      </ng-container>
+    </div>
     <ion-button
     type="submit"
     [disabled]="!loginForm.valid"
     >Login</ion-button>
+    <ion-button  (click)="registrousuario()">¿No tienes Cuenta? Registrate!</ion-button>
   </form>
   <!-- Agregar campo password (validators y mensajes)-->
   <!-- Agregar boton o link para redirigir al registro -->

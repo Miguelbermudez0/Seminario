@@ -1,4 +1,29 @@
-
+<ion-header>
+  <ionion-toolbar>
+    <ion-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-button>
+  </ionion-toolbar>
+</ion-header>
 <ion-content>
-  Pagina Home principal
+<ion-list>
+  <ion-card>
+    <img src="{{post-image}}" class="image-post"/>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-avatar class="user-avatar">
+          <img [src]="post.user.image ? post.user.image : 'assets/image/default-avatar.jpeg'"/>
+        </ion-avatar>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      {{post.description}}
+    </ion-card-content>
+  </ion-card>
+</ion-list>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed"> 
+  <ion-fab-button (click)="addPost()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
 </ion-content>
